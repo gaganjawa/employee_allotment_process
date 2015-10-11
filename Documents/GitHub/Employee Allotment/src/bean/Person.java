@@ -11,12 +11,12 @@ import java.util.Date;
  */
 public class Person
 {
-	protected String firstName,lastName;
-	protected String contactNo;
-	protected String emailID;
-	protected Date dateOfBirth;
-	protected Gender gender;
-	protected Address address;
+	private String firstName,lastName;
+	private String contactNo;
+	private String emailID;
+	private Date dateOfBirth;
+	private Gender gender;
+	private Address address;
 	
 	public Person(String firstName, String lastName, String contactNo,
 			String emailID, Date dateOfBirth, Gender gender, Address address)
@@ -100,9 +100,17 @@ public class Person
 		this.address = address;
 	}
 	
-	/*@Override
+	@Override
 	public String toString()
 	{
-		return firstName+" "+lastName+" "+ contactNo+" "+ emailID+" "+ dateOfBirth+" "+gender+" "+address;
-	}*/
+		java.lang.System.out.println("BASIC INFORMATION");
+		java.lang.System.out.println("---------------------");
+		java.lang.System.out.println("\t NAME:"+firstName+ " "+lastName);
+		java.lang.System.out.println("\t DATE OF BIRTH:"+dateOfBirth);
+		java.lang.System.out.println("\t GENDER:"+gender);
+		java.lang.System.out.println("\t CONTACT NO.:"+contactNo);
+		java.lang.System.out.println("\t EMAIL ID:"+emailID);
+		java.lang.System.out.println(address);
+		return "";
+	}
 }

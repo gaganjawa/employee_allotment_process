@@ -4,6 +4,8 @@
 package bean;
 
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * @author Administrator
@@ -11,32 +13,20 @@ import java.util.Map;
  */
 public class System
 {
-	private String systemID;
 	private boolean isAvailable;
 	private String operatingSystem;
 	private String ipAddress;
-	private Map<String,String> softwareMap;
+	private Map<String,Software> softwareMap;
 	
-	public System(String systemID, boolean isAvailable, String operatingSystem,
-			String ipAddress, Map<String, String> softwareMap)
+	public System(boolean isAvailable, String operatingSystem,
+			String ipAddress, Map<String, Software> softwareMap)
 	{
-		this.systemID = systemID;
 		this.isAvailable = isAvailable;
 		this.operatingSystem = operatingSystem;
 		this.ipAddress = ipAddress;
 		this.softwareMap = softwareMap;
 	}
 
-	public String getSystemID()
-	{
-		return systemID;
-	}
-	
-	public void setSystemID(String systemID)
-	{
-		this.systemID = systemID;
-	}
-	
 	public boolean isAvailable()
 	{
 		return isAvailable;
@@ -67,12 +57,12 @@ public class System
 		this.ipAddress = ipAddress;
 	}
 	
-	public Map<String,String> getSoftwareMap()
+	public Map<String,Software> getSoftwareMap()
 	{
 		return softwareMap;
 	}
 	
-	public void setSoftwareMap(Map<String,String> softwareMap)
+	public void setSoftwareMap(Map<String,Software> softwareMap)
 	{
 		this.softwareMap = softwareMap;
 	}
@@ -80,6 +70,39 @@ public class System
 	@Override
 	public String toString()
 	{
-		return systemID+" "+ isAvailable+" "+ operatingSystem+" "+ ipAddress+" "+ softwareMap;	
+		bean.System s=null;
+		java.lang.System.out.println("SYSTEM INFORMATION");
+		java.lang.System.out.println("---------------------");
+		java.lang.System.out.println("\t  IP ADDRESS:"+ipAddress);
+		java.lang.System.out.println("\t OPERATING SYSTEM:"+operatingSystem);
+		java.lang.System.out.print("\t SYSTEM STATUS: ");
+		if(isAvailable) java.lang.System.out.println("Available");
+		else java.lang.System.out.println("Not Available");
+		java.lang.System.out.println("\t LIST OF INSTALLED SOFTWARES: ");
+		java.lang.System.out.println("---------------------");
+		Set<Entry<String,Software>> softwareSet=softwareMap.entrySet();
+		for(Entry<String,Software> entry : softwareSet)
+		{
+			Software software=entry.getValue();
+			String softwareName=software.getSoftwareName();
+			java.lang.System.out.println("\t\t "+softwareName);
+		}
+		
+		return "";
+	}
+	
+	public int getRequiredSoftwareNumber(Project project)
+	{
+		int required=0;
+		Map<String,Software> requiredSoftwareMap=project.getSoftwareMap();
+		Set<String> requiredSoftwareIDs=requiredSoftwareMap.keySet();
+		for(String softwareID : requiredSoftwareIDs)
+		{
+			if(!softwareMap.containsKey(softwareID))
+			{
+				required++;
+			}
+		}
+		return required;
 	}
 }

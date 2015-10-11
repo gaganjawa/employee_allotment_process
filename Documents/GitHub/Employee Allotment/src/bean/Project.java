@@ -4,6 +4,8 @@
 package bean;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 /**
  * @author Administrator
@@ -11,21 +13,25 @@ import java.util.Map;
  */
 public class Project
 {
-	private String projectID;
+	//private String projectID;
 	private String projectName;
 	private String managerID;
-	private Map<String, String> softwareMap;
+	private Map<String, Software> softwareMap;
+	private int vacancies;
+	private Skill skill;
 	
-	public Project(String projectID, String projectName, String managerID,
-			Map<String, String> softwareMap)
+	public Project(/*String projectID,*/ String projectName, String managerID,
+			Map<String, Software> softwareMap,int vacancies,Skill skill)
 	{
-		this.projectID = projectID;
+		//this.projectID = projectID;
 		this.projectName = projectName;
 		this.managerID = managerID;
 		this.setSoftwareMap(softwareMap);
+		this.setVacancies(vacancies);
+		this.setSkill(skill);
 	}
 
-	public String getProjectID()
+/*	public String getProjectID()
 	{
 		return projectID;
 	}
@@ -34,7 +40,7 @@ public class Project
 	{
 		this.projectID = projectID;
 	}
-	
+	*/
 	public String getProjectName()
 	{
 		return projectName;
@@ -55,12 +61,12 @@ public class Project
 		this.managerID = managerID;
 	}
 
-	public Map<String, String> getSoftwareMap()
+	public Map<String, Software> getSoftwareMap()
 	{
 		return softwareMap;
 	}
 
-	public void setSoftwareMap(Map<String, String> softwareMap)
+	public void setSoftwareMap(Map<String, Software> softwareMap)
 	{
 		this.softwareMap = softwareMap;
 	}
@@ -68,6 +74,44 @@ public class Project
 	@Override
 	public String toString()
 	{
-		return projectID+" "+projectName+" "+ managerID+" "+softwareMap;
+		Project p=null;
+		java.lang.System.out.println("PROJECT INFORMATION");
+		java.lang.System.out.println("---------------------");
+		java.lang.System.out.println("\t PROJECT NAME: "+projectName);
+		java.lang.System.out.println("\t MANAGER ID: "+managerID);
+		java.lang.System.out.println("\t VACANCIES:"+vacancies);
+		java.lang.System.out.println("\t SKILL:"+skill);
+		java.lang.System.out.println("\t LIST OF SOFTWARE REQUIRED:");
+		java.lang.System.out.println("---------------------");
+		Set<Entry<String,Software>> softwareSet=softwareMap.entrySet();
+		for(Entry<String,Software> e : softwareSet)
+		{
+			Software software=e.getValue();
+			String softwareName=software.getSoftwareName();
+			java.lang.System.out.println("\t\t "+softwareName);
+		}
+		
+		return "";
+	}
+
+	public int getVacancies() {
+		return vacancies;
+	}
+
+	public void setVacancies(int vacancies) {
+		this.vacancies = vacancies;
+	}
+
+	public Skill getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Skill skill) {
+		this.skill = skill;
+	}
+	
+	public void decrementVacancies(int number)
+	{
+		vacancies-=number;
 	}
 }

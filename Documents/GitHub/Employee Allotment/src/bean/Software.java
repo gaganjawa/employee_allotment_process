@@ -9,23 +9,11 @@ package bean;
  */
 public class Software
 {
-	private String softwareID;
 	private String softwareName;
 	
-	public Software(String softwareID, String softwareName)
+	public Software(String softwareName)
 	{
-		this.softwareID = softwareID;
 		this.softwareName = softwareName;
-	}
-
-	public String getSoftwareID()
-	{
-		return softwareID;
-	}
-	
-	public void setSoftwareID(String softwareID)
-	{
-		this.softwareID = softwareID;
 	}
 	
 	public String getSoftwareName()
@@ -40,6 +28,10 @@ public class Software
 	
 	public String toString()
 	{
-		return softwareID+" "+ softwareName ;
+		java.lang.System.out.println("SOFTWARE INFORMATION:");
+		java.lang.System.out.println("---------------------");
+		java.lang.System.out.println("\t\t SOFTWARE NAME: "+softwareName);
+		
+		return "";
 	}
 }

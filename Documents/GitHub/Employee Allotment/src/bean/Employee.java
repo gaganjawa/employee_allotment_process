@@ -11,30 +11,35 @@ import java.util.Date;
  */
 public class Employee extends Person
 {
-
-	private String employeeID;
 	private double salary;
 	private String systemID;
 	private String unitID;
 	private String projectID;
 	private Designation designation;
+	private Skill skill;
+	private String interviewFeedback;
+	private Date dateOfJoining;
 
 	public Employee(String firstName, String lastName, String contactNo,
 			String emailID, Date dateOfBirth, Gender gender, Address address,
-			String employeeID, double salary, String systemID, String unitID,
-			String projectID, Designation designation)
+			double salary, String systemID, String unitID,
+			String projectID, Designation designation,
+			Skill skill,String interviewFeedback,Date dateOfJoining)
 	{
 		super(firstName, lastName, contactNo, emailID, dateOfBirth, gender,
 				address);
-		this.employeeID = employeeID;
+		//this.employeeID = employeeID;
 		this.salary = salary;
 		this.systemID = systemID;
 		this.unitID = unitID;
 		this.projectID = projectID;
 		this.designation = designation;
+		this.skill=skill;
+		this.interviewFeedback=interviewFeedback;
+		this.dateOfJoining=dateOfJoining;
 	}
 
-	public String getEmployeeID()
+	/*public String getEmployeeID()
 	{
 		return employeeID;
 	}
@@ -43,7 +48,7 @@ public class Employee extends Person
 	{
 		this.employeeID = employeeID;
 	}
-	
+	*/
 	public double getSalary()
 	{
 		return salary;
@@ -97,6 +102,37 @@ public class Employee extends Person
 	@Override
 	public String toString()
 	{
-		return firstName+" "+lastName+" "+ contactNo+" "+ emailID+" "+ dateOfBirth+" "+gender+" "+address+" "+employeeID+" "+ salary+" "+systemID+" "+ unitID+" "+ projectID+" " +designation;
+		super.toString();
+		
+		java.lang.System.out.println("OFFICIAL INFORMATION");
+		java.lang.System.out.println("---------------------");
+		java.lang.System.out.println("\t DESIGNATION: "+designation);
+		java.lang.System.out.println("\t DATE OF JOINING: "+dateOfJoining);
+		java.lang.System.out.println("\t SKILL: "+skill);
+		return "";
+	}
+
+	public Skill getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Skill skill) {
+		this.skill = skill;
+	}
+
+	public String getInterviewFeedback() {
+		return interviewFeedback;
+	}
+
+	public void setInterviewFeedback(String interviewFeedback) {
+		this.interviewFeedback = interviewFeedback;
+	}
+
+	public Date getDateOfJoining() {
+		return dateOfJoining;
+	}
+
+	public void setDateOfJoining(Date dateOfJoining) {
+		this.dateOfJoining = dateOfJoining;
 	}
 }

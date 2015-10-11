@@ -92,6 +92,14 @@ public class Address
 	@Override
 	public String toString()
 	{
-		return  street+" "+ country+" "+ city+" "+ state+ " "+ pincode+" "+ landmark;
+		java.lang.System.out.println("ADDRESS INFORMATION");
+		java.lang.System.out.println("---------------------");
+		java.lang.System.out.println("\t STREET: "+street);
+		java.lang.System.out.println("\t LANDMARK:"+landmark);
+		java.lang.System.out.println("\t CITY:"+city);
+		java.lang.System.out.println("\t STATE:"+state);
+		java.lang.System.out.println("\t COUNTRY:"+country);
+		java.lang.System.out.println("\t PINCODE:"+pincode);
+		return "";
 	}
 }
